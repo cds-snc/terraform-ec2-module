@@ -21,10 +21,10 @@ variable "ssh_public_key" {
   type = string
 }
 
-variable "read_dynamodb" { 
-  type = bool
-  default = false
-}
+# variable "read_dynamodb" { 
+#   type = bool
+#   default = false
+# }
 
 # variable "dynamodb_tables" { 
 #   type = list(string)
