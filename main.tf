@@ -32,30 +32,6 @@ resource "aws_internet_gateway" "gw" {
 
 }
 
-# resource "aws_security_group" "public_sg" {
-#   vpc_id = aws_vpc.main.id
-#   name   = "${var.name}_public_sg"
-
-#   ingress {
-#     description = "SSH into VPC"
-#     from_port   = 22
-#     to_port     = 22
-#     protocol    = "tcp"
-#     cidr_blocks = [aws_vpc.main.cidr_block]
-#   }
-
-#   egress {
-#     from_port   = 0
-#     to_port     = 0
-#     protocol    = "-1"
-#     cidr_blocks = ["0.0.0.0/0"]
-#   }
-
-#   tags = {
-#     Name = "${var.name}_public_sg"
-#   }
-
-# }
 
 resource "aws_default_security_group" "default" {
   vpc_id = aws_vpc.main.id
