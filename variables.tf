@@ -26,6 +26,6 @@ variable "read_dynamodb" {
   default = false
 }
 
-variable "dynamodb_tables" { 
-  type = list(string)
-}
+# variable "dynamodb_tables" { 
+#   type = list(string)
+# }
