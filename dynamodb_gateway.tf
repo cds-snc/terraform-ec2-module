@@ -4,7 +4,7 @@ resource "aws_vpc_endpoint" "dynamodb" {
   service_name      = "com.amazonaws.ca-central-1.dynamodb"
   route_table_ids   = [aws_vpc.main.default_route_table_id]
 
-  tags {
+  tags = {
     Name = "${var.name}_dynamodb_gateway"
   }
 }
