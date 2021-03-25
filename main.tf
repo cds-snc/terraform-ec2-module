@@ -1,7 +1,7 @@
 resource "aws_vpc" "main" {
 
-  cidr_block         = var.cidr_block
-  enable_dns_support = true
+  cidr_block           = var.cidr_block
+  enable_dns_support   = true
   enable_dns_hostnames = true
 
   tags = {
@@ -34,7 +34,7 @@ resource "aws_internet_gateway" "gw" {
 
 resource "aws_default_security_group" "default" {
   vpc_id = aws_vpc.main.id
-  
+
   ingress {
     description = "SSH into VPC"
     from_port   = 22

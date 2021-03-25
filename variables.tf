@@ -17,7 +17,7 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
-variable "ssh_public_key" { 
+variable "ssh_public_key" {
   type = string
 }
 

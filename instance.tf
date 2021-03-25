@@ -18,7 +18,7 @@ resource "aws_instance" "dev_work" {
   }
 
   root_block_device {
-    encrypted = true
+    encrypted   = true
     volume_size = 100
   }
 }
