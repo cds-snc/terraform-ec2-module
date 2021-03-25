@@ -6,10 +6,6 @@ resource "aws_default_route_table" "r" {
     gateway_id = aws_internet_gateway.gw.id
   }
 
-  route { 
-    cidr_block = "0.0.0.0/0"
-    vpc_endpoint_id  = aws_vpc_endpoint.dynamodb.id
-  }
   tags = {
     Name = "${var.name}_default_route_table"
   }
