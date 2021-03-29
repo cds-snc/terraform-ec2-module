@@ -2,8 +2,7 @@
 
 resource "aws_instance" "dev_work" {
   depends_on = [aws_internet_gateway.gw]
-  ami        = data.aws_ami.ubuntu.id
-
+  ami        = var.ami_id == null ? data.aws_ami.ubuntu.id : var.ami_id
 
   network_interface {
     network_interface_id = aws_network_interface.ni.id

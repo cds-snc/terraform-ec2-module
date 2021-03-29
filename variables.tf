@@ -21,6 +21,10 @@ variable "ssh_public_key" {
   type = string
 }
 
+variable "ami_id" {
+  type    = string
+  default = null
+}
 # variable "read_dynamodb" { 
 #   type = bool
 #   default = false
