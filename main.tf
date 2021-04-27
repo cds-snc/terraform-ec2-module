@@ -34,6 +34,10 @@ resource "aws_internet_gateway" "gw" {
 
 resource "aws_default_security_group" "default" {
   vpc_id = aws_vpc.main.id
+}
+
+resource "aws_security_group" "ec2" {
+  vpc_id = aws_vpc.main.id
 
   ingress {
     description = "SSH into VPC"
@@ -51,6 +55,6 @@ resource "aws_default_security_group" "default" {
   }
 
   tags = {
-    Name = "${var.name}_default_sg"
+    Name = "${var.name}_ec2_sg"
   }
 }

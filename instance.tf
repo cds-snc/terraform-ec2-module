@@ -1,8 +1,13 @@
 ### AWS INSTANCE
 
 resource "aws_instance" "dev_work" {
-  depends_on = [aws_internet_gateway.gw]
-  ami        = var.ami_id == null ? data.aws_ami.ubuntu.id : var.ami_id
+  depends_on                  = [aws_internet_gateway.gw]
+  ami                         = var.ami_id == null ? data.aws_ami.ubuntu.id : var.ami_id
+  associate_public_ip_address = false
+
+  metadata_options {
+    http_tokens = required
+  }
 
   network_interface {
     network_interface_id = aws_network_interface.ni.id
@@ -12,8 +17,10 @@ resource "aws_instance" "dev_work" {
   instance_type = var.instance_type
 
   key_name = aws_key_pair.ssh_key.key_name
+
   tags = {
     Name = "${var.name}_instance"
+    Created = timestamp()
   }
 
   root_block_device {
@@ -22,14 +29,23 @@ resource "aws_instance" "dev_work" {
   }
 }
 
+resource "aws_eip" "ec2" {
+  vpc = true
+}
 
 resource "aws_network_interface" "ni" {
-  subnet_id = aws_subnet.public.id
+  subnet_id       = aws_subnet.public.id
+  security_groups = [aws_security_group.ec2.id]
 
   tags = {
     Name = "${var.name}_network_interface"
   }
 
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.dev_work.id
+  allocation_id = aws_eip.ec2.id
 }
 
 resource "aws_key_pair" "ssh_key" {
