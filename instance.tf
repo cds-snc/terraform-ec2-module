@@ -6,7 +6,7 @@ resource "aws_instance" "dev_work" {
   associate_public_ip_address = false
 
   metadata_options {
-    http_tokens = required
+    http_tokens = "required"
   }
 
   network_interface {
