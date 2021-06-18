@@ -19,7 +19,7 @@ resource "aws_instance" "dev_work" {
   key_name = aws_key_pair.ssh_key.key_name
 
   tags = {
-    Name = "${var.name}_instance"
+    Name    = "${var.name}_instance"
     Created = timestamp()
   }
 

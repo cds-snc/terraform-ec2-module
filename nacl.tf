@@ -9,7 +9,7 @@ resource "aws_default_network_acl" "default" {
 
     rule_no    = 100
     protocol   = "tcp"
-    action     = "allow"
+    action     = var.enable_ssh ? "allow" : "deny"
     cidr_block = "0.0.0.0/0"
     from_port  = 22
     to_port    = 22

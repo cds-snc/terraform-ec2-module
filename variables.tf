@@ -25,11 +25,8 @@ variable "ami_id" {
   type    = string
   default = null
 }
-# variable "read_dynamodb" { 
-#   type = bool
-#   default = false
-# }
 
-# variable "dynamodb_tables" { 
-#   type = list(string)
-# }
+variable "enable_ssh" {
+  type    = bool
+  default = false
+}
