@@ -3,7 +3,6 @@
 resource "aws_instance" "dev_work" {
   depends_on                  = [aws_internet_gateway.gw]
   ami                         = var.ami_id == null ? data.aws_ami.ubuntu.id : var.ami_id
-  associate_public_ip_address = false
 
   metadata_options {
     http_tokens = "required"
