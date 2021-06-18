@@ -40,6 +40,7 @@ resource "aws_default_security_group" "default" {
 locals {
   disabled_rule = {
     enabled     = false
+    description = ""
     from_port   = 0
     to_port     = 0
     protocol    = "tcp"
